@@ -12,15 +12,18 @@ export default function TextForm(props) {
   const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Coverted to UpperCase!", "success");
     }
 
     const handleLowClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Coverted to LowerCase!", "success");
     }
 
     const handleClearClick = (event) => {
         setText("");
+        props.showAlert("Text Cleared!", "success");
     }
 
     const handleCopy = () => {
@@ -28,6 +31,7 @@ export default function TextForm(props) {
       text.select();
       text.setSelectionRange(0, 9999);
       navigator.clipboard.writeText(text.value);
+      props.showAlert("Copied to Clipboard!", "success");
     }
 
     const speak = () => {
@@ -47,6 +51,7 @@ export default function TextForm(props) {
     const handleExtraSpaces = () => {
       let newText = text.split(/[ ]+/);
       setText(newText.join(" "));
+      props.showAlert("Extra Spaces Removed!", "success");
     }
 
     const capitalized = () => {
@@ -57,17 +62,16 @@ export default function TextForm(props) {
           temp = arr[c-1].charAt(0).toUpperCase()+arr[c-1].substring(1).toLowerCase()+" "+temp
           c--;
       }
-    
-      setText(temp)
+      setText(temp);
+      props.showAlert("Text Captilized!", "success");
     }
 
     const reversed = () => {
       let str="";
       for (let index = text.length-1; index >=0; index--) {
         str+= text[index];
-        
       }
-      
+      props.showAlert("Text Reversed!", "success");
        return setText(str);
     }
       
