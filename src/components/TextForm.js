@@ -21,23 +21,35 @@ export default function TextForm(props) {
 
     const handleClearClick = (event) => {
         setText("");
-      }
-
-      const speak = () => {
-        let msg = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.speak(msg);
-        const toogle = document.getElementById('toggle')
-        if (toogle.textContent === "Speak") {
-            toogle.innerHTML = "Stop"
-        }
-        else {
-            if (toogle.innerHTML = "Speak") {
-                window.speechSynthesis.cancel()
-            }
-        }
     }
 
-    function capitalized(){
+    const handleCopy = () => {
+      var text = document.getElementById("myBox");
+      text.select();
+      text.setSelectionRange(0, 9999);
+      navigator.clipboard.writeText(text.value);
+    }
+
+    const speak = () => {
+      let msg = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(msg);
+      const toogle = document.getElementById('toggle')
+      if (toogle.textContent === "Speak") {
+          toogle.innerHTML = "Stop"
+      }
+      else {
+          if (toogle.innerHTML = "Speak") {
+              window.speechSynthesis.cancel()
+          }
+      }
+    }
+
+    const handleExtraSpaces = () => {
+      let newText = text.split(/[ ]+/);
+      setText(newText.join(" "));
+    }
+
+    const capitalized = () => {
       var arr = text.split(" ")
       var c = arr.length
       var temp = ""
@@ -73,6 +85,8 @@ export default function TextForm(props) {
     <button className="btn btn-primary mx-2" onClick={handleUpClick}>UpperCase</button>
     <button className="btn btn-primary mx-2" onClick={handleLowClick}>LowerCase</button>
     <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+    <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
+    <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     <button type="submit" className="btn btn-primary mx-2 my-2" onClick={speak}id="toggle">Speak</button>
     <button className="btn btn-primary mx-2" onClick={capitalized}>Capitalize</button>
     <button className="btn btn-primary mx-2" onClick={reversed}>Reverse</button>
