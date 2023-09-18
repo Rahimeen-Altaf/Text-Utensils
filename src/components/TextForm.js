@@ -27,7 +27,7 @@ export default function TextForm(props) {
         let msg = new SpeechSynthesisUtterance(text);
         window.speechSynthesis.speak(msg);
         const toogle = document.getElementById('toggle')
-        if (toogle.textContent == "Speak") {
+        if (toogle.textContent === "Speak") {
             toogle.innerHTML = "Stop"
         }
         else {
