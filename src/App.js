@@ -25,10 +25,21 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = '#042743';
       showAlert('Dark Mode has been Enabled.', 'success');
+      document.title = 'TextXpress - DarkMode';
+
+      // setInterval(()=>{
+      //   document.title = 'TextXpress is Amazing';
+      // }, 2000);
+      
+      // setInterval(()=>{
+      //   document.title = 'Install TextXpress Now';
+      // }, 1500);
+
     } else {
       setMode("light");
       document.body.style.backgroundColor = 'white';
       showAlert('Light Mode has been Enabled.', 'success');
+      document.title = 'TextXpress - LightMode';
     }
   }
 
