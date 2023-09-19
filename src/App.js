@@ -18,7 +18,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 1500)
+    }, 1800)
   };
 
   const toggleMode = () => {
@@ -26,7 +26,7 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = '#042743';
       showAlert('Dark Mode has been Enabled.', 'success');
-      document.title = 'TextXpress - DarkMode';
+      // document.title = 'TextXpress - DarkMode';
 
       // setInterval(()=>{
       //   document.title = 'TextXpress is Amazing';
@@ -40,19 +40,19 @@ function App() {
       setMode("light");
       document.body.style.backgroundColor = 'white';
       showAlert('Light Mode has been Enabled.', 'success');
-      document.title = 'TextXpress - LightMode';
+      // document.title = 'TextXpress - LightMode';
     }
   }
 
   return (
     <>
     <Router>
-    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
+    <Navbar title="TextXpress" mode={mode} toggleMode={toggleMode}/>
     <Alert alert={alert}/>
     <div className="container my-3">
       <Routes>
-        <Route path="/about" element={<About />}></Route>	
-        <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>}></Route>	
+        <Route path="/about" element={<About mode={mode} title={'TextXpress - About'}/>}></Route>	
+        <Route path="/" element={<TextForm showAlert={showAlert} heading="TextXpress - Text Manipulation Tool" mode={mode} title={'TextXpress - Home'}/>}></Route>	
       </Routes>
     </div>
     </Router>
