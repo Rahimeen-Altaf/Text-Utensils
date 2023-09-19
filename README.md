@@ -1,4 +1,4 @@
-# Text utensils
+# TextXpress
 
 ### Description:
 The Text Manipulation Tool is a versatile web application that allows users to perform various operations on text. Whether you need to format text, analyze its properties, or even have it read aloud, this tool has you covered. Developed using React.js, this project provides a user-friendly interface for text processing.
@@ -19,6 +19,8 @@ The Text Manipulation Tool is a versatile web application that allows users to p
 2. Choose from a variety of text manipulation options.
 3. View the modified text, word count, and reading time in real-time.
 4. Customize your experience with the built-in dark mode feature.
+5. Receive alerts for clear user feedback on each operation.
+6. Routing to navigate through pages.
 
 ### Motivation:
 This project was created to provide a convenient and accessible tool for users to manipulate text in a variety of ways. Whether you're a writer, student, or anyone dealing with text regularly, this tool can help streamline your tasks while offering a pleasant dark mode for those late-night sessions.
