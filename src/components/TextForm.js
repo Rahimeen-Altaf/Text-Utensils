@@ -34,19 +34,31 @@ export default function TextForm(props) {
       props.showAlert("Copied to Clipboard!", "success");
     }
 
+    let isSpeaking = false;
+
     const speak = () => {
+    const toogle = document.getElementById('toggle');
+
+    if (!isSpeaking) {
       let msg = new SpeechSynthesisUtterance(text);
+
+      msg.onend = () => {
+        isSpeaking = false;
+        toogle.innerHTML = "Speak";
+      };
+
       window.speechSynthesis.speak(msg);
-      const toogle = document.getElementById('toggle')
-      if (toogle.textContent === "Speak") {
-          toogle.innerHTML = "Stop"
-      }
-      else {
-          if (toogle.innerHTML = "Speak") {
-              window.speechSynthesis.cancel()
-          }
+      toogle.innerHTML = "Stop";
+      isSpeaking = true;
+    } else {
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        toogle.innerHTML = "Speak";
       }
     }
+  };
+
 
     const handleExtraSpaces = () => {
       let newText = text.split(/[ ]+/);
