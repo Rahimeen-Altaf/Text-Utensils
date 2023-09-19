@@ -29,10 +29,7 @@ export default function TextForm(props) {
     }
 
     const handleCopy = () => {
-      var text = document.getElementById("myBox");
-      text.select();
-      navigator.clipboard.writeText(text.value);
-      document.getSelection().removeAllRanges();
+      navigator.clipboard.writeText(text);
       props.showAlert("Copied to Clipboard!", "success");
     }
 
@@ -62,31 +59,31 @@ export default function TextForm(props) {
   };
 
 
-    const handleExtraSpaces = () => {
-      let newText = text.split(/[ ]+/);
-      setText(newText.join(" "));
-      props.showAlert("Extra Spaces Removed!", "success");
-    }
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+    props.showAlert("Extra Spaces Removed!", "success");
+  }
 
-    const capitalized = () => {
-      var arr = text.split(" ")
-      var c = arr.length
-      var temp = ""
-      while(c!==0){
-          temp = arr[c-1].charAt(0).toUpperCase()+arr[c-1].substring(1).toLowerCase()+" "+temp
-          c--;
-      }
+  const capitalized = () => {
+    var arr = text.split(" ")
+    var c = arr.length
+    var temp = ""
+    while(c!==0){
+      temp = arr[c-1].charAt(0).toUpperCase()+arr[c-1].substring(1).toLowerCase()+" "+temp
+      c--;
+    }
       setText(temp);
       props.showAlert("Text Captilized!", "success");
     }
 
-    const reversed = () => {
-      let str="";
-      for (let index = text.length-1; index >=0; index--) {
-        str+= text[index];
-      }
+  const reversed = () => {
+    let str="";
+    for (let index = text.length-1; index >=0; index--) {
+    str+= text[index];
+    }
       props.showAlert("Text Reversed!", "success");
-       return setText(str);
+      return setText(str);
     }
       
   return (
@@ -116,14 +113,13 @@ export default function TextForm(props) {
   <h2>Preview</h2>
   <p>{text.length>0 ? text : "Nothing to Preview!"}</p>
 </div>
-
     </>
   )
 }
 
 const wordCount = (text) => {
   return text
-  .split(' ')
+  .split(/\s+/)
   .filter(text => text.length !== 0)
   .length
 };

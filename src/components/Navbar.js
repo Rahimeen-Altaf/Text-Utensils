@@ -20,13 +20,9 @@ export default function Navbar(props) {
           <Link className="nav-link active" to="/about">{props.aboutText}</Link>
         </li>
       </ul>
-      {/* <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-primary" type="submit">Search</button>
-      // </form> */}
       <div className={`form-check form-switch text-${ props.mode === 'light' ? 'dark' : 'light' } me-auto`}>
         <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-        <label className="form-check-label" htmlForor="flexSwitchCheckDefault">Enable DarkMode</label>
+        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable DarkMode</label>
       </div>
     </div>
   </div>
@@ -34,13 +30,11 @@ export default function Navbar(props) {
   )
 }
 
-//setting types values for props
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired, //isRequired will throw an error if not given
+    title: PropTypes.string.isRequired,
     aboutText: PropTypes.string.isRequired
 }
 
-//setting default values for props
 Navbar.defaultProps = {
     title: "Set Title Here",
     aboutText: "About"
